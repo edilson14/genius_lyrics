@@ -1,0 +1,16 @@
+name: Unit test
+
+on:
+  schedule:
+    - cron: "10 * * *"
+
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: dart-lang/setup-dart@v3
+
+      - name: install dependencies
+        run: dart pub get
