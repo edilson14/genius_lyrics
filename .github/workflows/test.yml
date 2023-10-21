@@ -10,9 +10,13 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+      - name: setup repository
+        uses: actions/checkout@v2
+        
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: 3.0.0
+      
 
       - name: install dependencies
         run: dart pub get
