@@ -33,7 +33,7 @@ class HttpClient {
 
   static Uri parseUrl(
     String url, {
-    Map<String, dynamic>? query,
+    Map<String, String>? query,
   }) {
     return Uri.parse(Uri.encodeFull(url)).replace(queryParameters: query);
   }
