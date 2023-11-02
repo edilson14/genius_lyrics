@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class HttpClient {
-  final String accessToken;
+  // final String accessToken;
 
-  HttpClient({required this.accessToken});
+  HttpClient();
 
   Future<Map<String, dynamic>?> makeRequest({
     required String url,
@@ -13,13 +13,13 @@ class HttpClient {
     Map<String, dynamic>? query,
   }) async {
     try {
-      String result = (await http.get(
-              parseUrl(
-                url,
-                query: query,
-              ),
-              headers:
-                  headers ? {'Authorization': 'Bearer $accessToken'} : null))
+      String result = (await http.get(parseUrl(
+        url,
+        query: query,
+      )
+              // headers:
+              //     headers ? {'Authorization': 'Bearer $accessToken'} : null
+              ))
           .body;
       return (jsonDecode(result) as Map<String, dynamic>?)?['response'];
     } catch (e) {

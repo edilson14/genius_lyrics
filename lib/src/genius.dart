@@ -6,17 +6,17 @@ import 'package:genius_lyrics/models/models.dart';
 enum SongsSorting { popularity, title, release_date }
 
 class Genius {
-  String accessToken;
+  // String accessToken;
   bool verbose;
   bool skipNonSongs;
   late HttpClient _httpClient;
 
   Genius({
-    required this.accessToken,
+    // required this.accessToken,
     this.verbose = true,
     this.skipNonSongs = true,
   }) {
-    _httpClient = HttpClient(accessToken: accessToken);
+    _httpClient = HttpClient();
   }
 
   /// Shows `errorMsg`(error message) if `verbose` is true and returns null
