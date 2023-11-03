@@ -1,5 +1,3 @@
-@Timeout(Duration(seconds: 60))
-
 import 'package:test/test.dart';
 import 'package:genius_lyrics/genius_lyrics.dart';
 
@@ -9,8 +7,7 @@ void main() {
         'au3tufuJPmdCAk5QHCKA3YHTPV8ui4-qsyhHSnBqYkvlZY-WLRlLMbPqf8USG8Ty',
     verbose: false,
   );
-  test('Testing songs search', timeout: const Timeout(Duration(minutes: 1)),
-      () async {
+  test('Testing songs search', () async {
     Song? song =
         await genius.searchSong(artist: 'Kendrick Lamar', title: 'Real');
     expect(song?.artist, equals('Kendrick Lamar'));
@@ -28,8 +25,7 @@ void main() {
         equals(true));
     expect(song?.lyrics?.isEmpty, equals(false));
   });
-  test('Testing album search', timeout: const Timeout(Duration(minutes: 1)),
-      () async {
+  test('Testing album search', () async {
     Album? album = await genius.searchAlbum(artist: 'Eminem', name: 'Recovery');
     expect(album?.artist?.name, equals('Eminem'));
     expect(album?.fullTitle, equals("Recovery by Eminem"));
@@ -47,8 +43,7 @@ void main() {
         equals(true));
   });
 
-  test('Testing artist search', timeout: const Timeout(Duration(seconds: 90)),
-      () async {
+  test('Testing artist search', () async {
     genius.verbose = true;
     Artist? artist =
         await genius.searchArtist(artistName: 'Eminem', maxSongs: 5);
@@ -68,8 +63,7 @@ void main() {
     expect(artist?.songs.length, equals(5));
   });
 
-  test('Testing getting album tracks',
-      timeout: const Timeout(Duration(minutes: 1)), () async {
+  test('Testing getting album tracks', () async {
     List<dynamic>? trakList =
         await genius.albumTracks(albumId: 2876, perPage: 50, page: 1);
     List<Song> tracks = [];
@@ -122,8 +116,7 @@ void main() {
     expect(tracks.any((element) => element.lyrics!.isNotEmpty), equals(true));
   });
 
-  test('Testing searching songs by lyrics snippet',
-      timeout: const Timeout(Duration(minutes: 1)), () async {
+  test('Testing searching songs by lyrics snippet', () async {
     List<Song>? song = (await genius.searchSongsByLyricsSnippet(
         lyricsSnippet: 'all the memories collected', getFullInfo: true));
 
