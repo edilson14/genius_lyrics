@@ -19,3 +19,6 @@ jobs:
 
       - name: install dependencies
         run: dart pub get
+      
+      - name: run test
+        run: dart run test

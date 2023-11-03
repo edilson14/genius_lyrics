@@ -5,7 +5,8 @@ import 'package:genius_lyrics/genius_lyrics.dart';
 
 void main() {
   final genius = Genius(
-    accessToken: const String.fromEnvironment('GENIUS_TOKEN'),
+    accessToken:
+        'au3tufuJPmdCAk5QHCKA3YHTPV8ui4-qsyhHSnBqYkvlZY-WLRlLMbPqf8USG8Ty',
     verbose: false,
   );
   test('Testing songs search', timeout: const Timeout(Duration(minutes: 1)),
