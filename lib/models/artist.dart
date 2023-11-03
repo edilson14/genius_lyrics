@@ -63,6 +63,12 @@ class Artist {
     _about = artistInfo['description']?['plain'];
   }
 
+  factory Artist.fromJson(Map<String, dynamic> json) {
+    return Artist(
+      artistInfo: json,
+    );
+  }
+
   /// Returns song data and this data have some fields that are not present in the [Artist]
   Map<String, dynamic> get toJson => _artistInfo;
 
@@ -81,6 +87,7 @@ class Artist {
   bool? get isVerified => _isVerified;
 
   String? get name => _name;
+
   List<String> get alternateNames => _alternateNames;
 
   String? get url => _url;
@@ -91,6 +98,7 @@ class Artist {
   String? get about => _about;
 
   int get numSongs => _numSongs;
+
   SocialNetwork? get socialNetwork => _socialNetwork;
 
   ///Gets the artist's song return a [Song] in case of success and null otherwise.
@@ -128,7 +136,8 @@ class Artist {
 
       if (name != null || newSong.artist != null) {
         if (newSong.artist == name ||
-            (includeFeatures && newSong.featuredArtists.contains(name))) {
+            (includeFeatures &&
+                newSong.featuredArtists.any((artist) => artist.name == name))) {
           _songs.add(newSong);
           ++_numSongs;
           if (verbose) {
